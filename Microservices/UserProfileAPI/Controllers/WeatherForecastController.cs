@@ -17,7 +17,7 @@ namespace UserProfileAPI.Controllers
         {
             _logger = logger;
         }
-
+        //dummy
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
