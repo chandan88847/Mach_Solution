@@ -20,4 +20,6 @@ services:
       - 8001:80
     networks:
       - backend
-      
+networks:
+  backend:
+    driver : bridge      
