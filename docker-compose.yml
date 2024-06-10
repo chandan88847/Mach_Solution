@@ -1,15 +1,6 @@
 version: '3.4'
 
 services:
-  userdataapi:
-    image: ${DOCKER_REGISTRY-}userdataapi
-    build:
-      context: .
-      dockerfile: UserDataAPI/Dockerfile
-
-
-
-
   apiocelotgateway:
     container_name: api-ocelotgateway
     image: ${DOCKER_REGISTRY-}apiocelotgateway

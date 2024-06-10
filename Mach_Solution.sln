@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationAPI", "Authen
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{A00C7064-8614-42A1-8C85-FB6770D9ABEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserProfileAPI", "Microservices\UserProfileAPI\UserProfileAPI.csproj", "{6FD4AA26-3B6A-4D21-B800-44380B86B921}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2C3FD3FB-8B61-4005-B648-B813B82E884F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C3FD3FB-8B61-4005-B648-B813B82E884F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C3FD3FB-8B61-4005-B648-B813B82E884F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FD4AA26-3B6A-4D21-B800-44380B86B921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FD4AA26-3B6A-4D21-B800-44380B86B921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FD4AA26-3B6A-4D21-B800-44380B86B921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FD4AA26-3B6A-4D21-B800-44380B86B921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -40,6 +46,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E6786006-46B5-4C31-91EB-F84B9F9BDA38} = {DCDA565A-6C91-4BF7-9A6A-44712EC3368C}
 		{2C3FD3FB-8B61-4005-B648-B813B82E884F} = {F2BC3660-81E7-4D6F-83D6-6D0645DFF03C}
+		{6FD4AA26-3B6A-4D21-B800-44380B86B921} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CCFE3C7-EF9E-41AD-BD43-F14E4897AD7C}
