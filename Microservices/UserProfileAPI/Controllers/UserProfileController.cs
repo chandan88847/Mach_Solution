@@ -24,7 +24,7 @@ namespace UserProfileAPI.Controllers
         }
 
         [HttpGet("getusersbyid/{id}")]
-        public ActionResult<UserProfileModel> GetUsersById([FromBody] int id)
+        public ActionResult<UserProfileModel> GetUsersById(int id)
         {
             UserProfileModel userProfileModel = _userDbContext.Users.Find(id);
             return userProfileModel;
@@ -41,15 +41,16 @@ namespace UserProfileAPI.Controllers
         [HttpPut("updateuser")]
         public ActionResult UpdateUser([FromBody] UserProfileModel userProfileModel)
         {
-            _userDbContext.Update(userProfileModel);
+            _userDbContext.Users.Update(userProfileModel);
             _userDbContext.SaveChanges();
             return Ok("User Updated Successfully");
         }
 
         [HttpDelete("deleteuser")]
-        public ActionResult DeleteUser([FromBody] int id)
+        public ActionResult DeleteUser(int id)
         {
-            _userDbContext.Remove(id);
+            UserProfileModel userProfileModel = _userDbContext.Users.Find(id);
+            _userDbContext.Users.Remove(userProfileModel);
             _userDbContext.SaveChanges();
             return Ok("User Deleted Successfully");
         }
