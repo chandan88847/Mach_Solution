@@ -11,8 +11,8 @@ namespace UserProfileAPI.Models
         public Guid ProfileId { get; set; }
         [Required]
         public int UserId { get; set; }
-        [ForeignKey("Id")]
-        public ApplicationUser applicationUser { get; set; }
+        [NotMapped]
+        public RegisterDTO registerDTO { get; set; }
         public string PhoneNumber { get; set; }
         //public byte[] UserPhoto { get; set; }
         public bool EmailVerified { get; set; }

@@ -1,5 +1,9 @@
+using AuthenticationAPI.Data;
+using AuthenticationAPI.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UserProfileAPI;
+using UserProfileAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +14,9 @@ builder.Services.AddControllers();
 /* Database Context Dependency Injection */
 builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-var app = builder.Build();
+//builder.Services.AddIdentity<UserProfileModel, ApplicationUser>().AddEntityFrameworkStores<UserDbContext>();
 
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
