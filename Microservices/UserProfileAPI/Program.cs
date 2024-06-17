@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 /* Database Context Dependency Injection */
-builder.Services.AddDbContext<UserDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<UserProfileDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //builder.Services.AddIdentity<UserProfileModel, ApplicationUser>().AddEntityFrameworkStores<UserDbContext>();
 

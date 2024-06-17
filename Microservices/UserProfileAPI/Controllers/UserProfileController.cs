@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UserProfileAPI.Models;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using UserProfileAPI.Services;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace UserProfileAPI.Controllers
 {
@@ -9,50 +10,44 @@ namespace UserProfileAPI.Controllers
     [ApiController]
     public class UserProfileController : ControllerBase
     {
-        private readonly UserDbContext _userDbContext;
+        private readonly UserProfileService _userProfileService;
 
-        public UserProfileController(UserDbContext userDbContext)
+        public UserProfileController(UserProfileService userProfileService)
         {
-            _userDbContext = userDbContext;
+            _userProfileService = userProfileService;
         }
 
-        [HttpGet("getusers")]
-        public ActionResult<IEnumerable<UserProfileModel>> GetUsers()
+        // GET: api/UserProfile
+        [HttpGet("getall")]
+        public async Task<ActionResult<IEnumerable<UserProfile>>> GetAllUserProfiles()
         {
-            List<UserProfileModel> userProfileModels = _userDbContext.Users.ToList();
-            return userProfileModels;
+            var profiles = await _userProfileService.GetAllUserProfilesAsync();
+            return Ok(profiles);
         }
 
-        [HttpGet("getusersbyid/{id}")]
-        public ActionResult<UserProfileModel> GetUsersById(int id)
+        // PUT: api/UserProfile
+        [HttpPut("update")]
+        public async Task<ActionResult<UserProfile>> UpdateUserProfile(UserProfile userProfile)
         {
-            UserProfileModel userProfileModel = _userDbContext.Users.Find(id);
-            return userProfileModel;
+            var updatedProfile = await _userProfileService.UpdateUserProfileAsync(userProfile);
+            if (updatedProfile == null)
+            {
+                return NotFound();
+            }
+            return Ok(updatedProfile);
         }
 
-        [HttpPost("adduser")]
-        public ActionResult AddUser([FromBody] UserProfileModel userProfileModel)
+        // DELETE: api/UserProfile/{id}
+        [HttpDelete("deleteuser/{id}")]
+        public async Task<ActionResult> DeleteUserProfile(int id)
         {
-            _userDbContext.Add(userProfileModel);
-            _userDbContext.SaveChanges();
-            return Ok("User Added Successfully");
+            var result = await _userProfileService.DeleteUserProfileAsync(id);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
 
-        [HttpPut("updateuser")]
-        public ActionResult UpdateUser([FromBody] UserProfileModel userProfileModel)
-        {
-            _userDbContext.Users.Update(userProfileModel);
-            _userDbContext.SaveChanges();
-            return Ok("User Updated Successfully");
-        }
-
-        [HttpDelete("deleteuser")]
-        public ActionResult DeleteUser(int id)
-        {
-            UserProfileModel userProfileModel = _userDbContext.Users.Find(id);
-            _userDbContext.Users.Remove(userProfileModel);
-            _userDbContext.SaveChanges();
-            return Ok("User Deleted Successfully");
-        }
     }
 }
