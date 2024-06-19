@@ -10,5 +10,17 @@ namespace UserAPI.Data
         {
         }
         public DbSet<User> UserProfiles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .HasKey(e => e.UserProfileId);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.ApplicationUserId)
+                .IsRequired();
+        }
     }
 }

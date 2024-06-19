@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.InteropServices;
+using UserAPI.Dto;
 using UserAPI.Model;
 using UserAPI.Services;
 
@@ -11,9 +13,22 @@ namespace UserAPI.Controllers
     {
         private readonly UserService _userService;
 
-        public UserController(UserService userService)
+        private readonly InterServiceCalls _interServiceCalls;
+
+        public UserController(UserService userService,InterServiceCalls interServiceCalls)
         {
             _userService = userService;
+            _interServiceCalls = interServiceCalls;
+        }
+
+        [HttpPost("createuserprofileasync")]
+        public async Task<ActionResult> CreateUserProfileasync([FromBody] ProfileDto applicationUserId)
+        {
+            // await _userService.CreateUserProfileAsync(applicationUserId);
+            string Id= applicationUserId.UserId.ToString();
+          
+            await _userService.CreateUserProfileAsync(Id); ;
+            return Ok();
         }
 
         // GET: api/UserProfile
@@ -28,6 +43,7 @@ namespace UserAPI.Controllers
         [HttpPut("update")]
         public async Task<ActionResult<User>> UpdateUserProfile(User userProfile)
         {
+           
             var updatedProfile = await _userService.UpdateUserProfileAsync(userProfile);
             if (updatedProfile == null)
             {

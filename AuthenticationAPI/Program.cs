@@ -1,5 +1,6 @@
 using AuthenticationAPI.Data;
 using AuthenticationAPI.Models;
+using AuthenticationAPI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,13 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod());
 });
 
+//builder.Services.AddHttpClient<ApplicationUserService>(client =>
+//{
+//    client.BaseAddress = new Uri("http://identity-service/");
+//});
+
+builder.Services.AddHttpClient<ApplicationUserService>();
+builder.Services.AddScoped<ApplicationUserService>();
 
 
 var app = builder.Build();

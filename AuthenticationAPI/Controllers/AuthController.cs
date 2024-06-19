@@ -1,6 +1,7 @@
 ﻿using AuthenticationAPI.Data;
 using AuthenticationAPI.DTO;
 using AuthenticationAPI.Models;
+using AuthenticationAPI.Services;
 using AuthenticationAPI.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -21,10 +22,11 @@ namespace AuthenticationAPI.Controllers
         private ApiResponse _apiResponse;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole>  _roleManager;
+        private readonly ApplicationUserService _applicationUserService;
         private string secret_key;
         private int validtime;
 
-        public AuthController(ApplicationDbContext db,IConfiguration configuration, RoleManager<IdentityRole> roleManager,UserManager<ApplicationUser>userManager)
+        public AuthController(ApplicationDbContext db,IConfiguration configuration, RoleManager<IdentityRole> roleManager,UserManager<ApplicationUser>userManager, ApplicationUserService applicationUserService)
         {
             _db = db;
             secret_key = configuration.GetValue<string>("ApiSettings:SecretKey");
@@ -32,6 +34,8 @@ namespace AuthenticationAPI.Controllers
             _apiResponse = new ApiResponse();
             _roleManager = roleManager;
             _userManager = userManager;
+            _applicationUserService = applicationUserService;
+
         }
 
         [HttpPost("login")]
@@ -130,6 +134,8 @@ namespace AuthenticationAPI.Controllers
                     {
                         await _userManager.AddToRoleAsync(applicationUser, Constants.Role_Admin);
                     }
+                    var user = _applicationUserService.GetUserIdByUserName(registerDTO.UserName);
+                    bool flag=await _applicationUserService.ApplicationUserEntityAsync(user.Result.ToString());
                     _apiResponse.httpstatuscode = HttpStatusCode.OK;
                     _apiResponse.IsSuccess = true;
                     return Ok(_apiResponse);
