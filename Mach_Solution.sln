@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserDataAPI", "Microservices\UserDataAPI\UserDataAPI.csproj", "{5EB3F060-620A-441B-9127-569F465E0EA1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentService", "Microservices\PaymentService\PaymentService.csproj", "{3905D5BF-9335-4389-BC5A-8414CDDE1853}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5EB3F060-620A-441B-9127-569F465E0EA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB3F060-620A-441B-9127-569F465E0EA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EB3F060-620A-441B-9127-569F465E0EA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3905D5BF-9335-4389-BC5A-8414CDDE1853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3905D5BF-9335-4389-BC5A-8414CDDE1853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3905D5BF-9335-4389-BC5A-8414CDDE1853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3905D5BF-9335-4389-BC5A-8414CDDE1853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{E6786006-46B5-4C31-91EB-F84B9F9BDA38} = {DCDA565A-6C91-4BF7-9A6A-44712EC3368C}
 		{2C3FD3FB-8B61-4005-B648-B813B82E884F} = {F2BC3660-81E7-4D6F-83D6-6D0645DFF03C}
 		{5EB3F060-620A-441B-9127-569F465E0EA1} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
+		{3905D5BF-9335-4389-BC5A-8414CDDE1853} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CCFE3C7-EF9E-41AD-BD43-F14E4897AD7C}
