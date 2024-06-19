@@ -1,20 +1,19 @@
 ﻿using AuthenticationAPI.DTO;
 using AuthenticationAPI.Models;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UserProfileAPI.Models
 {
     public class UserProfile
     {
         [Key]
-        public int Id { get; set; }
+        public int UserProfileId { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
-        [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
         //public byte[] UserPhoto { get; set; }
         public bool EmailVerified { get; set; }
         public bool PhoneNumberVerified { get; set; }

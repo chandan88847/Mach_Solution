@@ -41,9 +41,9 @@ namespace UserProfileAPI.Migrations
                 name: "UserProfiles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    UserProfileId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     EmailVerified = table.Column<bool>(type: "bit", nullable: false),
                     PhoneNumberVerified = table.Column<bool>(type: "bit", nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
@@ -58,19 +58,19 @@ namespace UserProfileAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserProfiles", x => x.Id);
+                    table.PrimaryKey("PK_UserProfiles", x => x.UserProfileId);
                     table.ForeignKey(
-                        name: "FK_UserProfiles_ApplicationUser_UserId",
-                        column: x => x.UserId,
+                        name: "FK_UserProfiles_ApplicationUser_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "ApplicationUser",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserProfiles_UserId",
+                name: "IX_UserProfiles_ApplicationUserId",
                 table: "UserProfiles",
-                column: "UserId");
+                column: "ApplicationUserId");
         }
 
         /// <inheritdoc />

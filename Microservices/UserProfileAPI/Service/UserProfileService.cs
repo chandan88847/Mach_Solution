@@ -21,7 +21,7 @@ namespace UserProfileAPI.Services
 
         public async Task<UserProfile> UpdateUserProfileAsync(UserProfile updatedProfile)
         {
-            var existingProfile = await _context.UserProfiles.FindAsync(updatedProfile.Id);
+            var existingProfile = await _context.UserProfiles.FindAsync(updatedProfile.UserProfileId);
             if (existingProfile == null)
             {
                 return null; // or throw an exception
