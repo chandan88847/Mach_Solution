@@ -33,11 +33,21 @@ namespace UserAPI.Services
                     ApplicationUserId = applicationUserId
                 };
                 await _context.UserProfiles.AddAsync(userProfile);
-                await _context.SaveChangesAsync();
-
-                
+                await _context.SaveChangesAsync();                
             }
+        }
 
+
+        public async Task<User> GetUserProfileByApplicationID(string applicationId)
+        {
+
+            //add code here
+            var userprofile = await _context.UserProfiles.FindAsync(applicationId);
+            if (userprofile == null) 
+            { 
+
+            }
+            return userprofile;
         }
 
         public async Task<User> UpdateUserProfileAsync(User userProfile)
