@@ -39,6 +39,13 @@ namespace UserAPI.Controllers
             return Ok(profiles);
         }
 
+        [HttpGet("GetUserProfileByApplicationID/{applicationUserId}")]
+        public async Task<ActionResult<User>> GetUserProfileByApplicationID(string applicationUserId)
+        {
+            var profile = await _userService.GetUserProfileByApplicationIDAsync(applicationUserId);
+            return Ok(profile);
+        }
+
         // PUT: api/UserProfile
         [HttpPut("update")]
         public async Task<ActionResult<User>> UpdateUserProfile(User userProfile)
