@@ -37,17 +37,21 @@ namespace UserAPI.Services
             }
         }
 
-
-        public async Task<User> GetUserProfileByApplicationID(string applicationId)
+        public async Task<User> GetUserProfileByApplicationIDAsync(string applicationUserId)
         {
-
-            //add code here
-            var userprofile = await _context.UserProfiles.FindAsync(applicationId);
-            if (userprofile == null) 
-            { 
-
+            if (string.IsNullOrWhiteSpace(applicationUserId))
+            {
+                throw new ArgumentException("ApplicationUserId is required.", nameof(applicationUserId));
             }
-            return userprofile;
+
+            var user = await _context.UserProfiles.FirstOrDefaultAsync(u => u.ApplicationUserId == applicationUserId);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException("User not found.");
+            }
+
+            return user;
         }
 
         public async Task<User> UpdateUserProfileAsync(User userProfile)

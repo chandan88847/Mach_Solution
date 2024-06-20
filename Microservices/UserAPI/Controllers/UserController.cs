@@ -42,7 +42,7 @@ namespace UserAPI.Controllers
         [HttpGet("GetUserProfileByApplicationID/{applicationUserId}")]
         public async Task<ActionResult<User>> GetUserProfileByApplicationID(string applicationUserId)
         {
-            var profile = await _userService.GetUserProfileByApplicationID(applicationUserId);
+            var profile = await _userService.GetUserProfileByApplicationIDAsync(applicationUserId);
             return Ok(profile);
         }
 
