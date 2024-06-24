@@ -76,6 +76,10 @@ namespace VehicleFinderAPI.Controllers
         public async Task<ActionResult<IEnumerable<VehicleDetails>>> GetVehicleByLocation(string location)
         {
             var vehicles = await _vehicleService.GetVehicleByLocationAsync(location);
+            if (vehicles == null)
+            {
+                return NotFound();
+            }
             return Ok(vehicles);
         }
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Algolia.Search.Clients;
+using Algolia.Search.Models.Search;
+using Microsoft.EntityFrameworkCore;
 using UserAPI.Data;
 using VehicleFinderAPI.Models;
 
@@ -7,10 +9,12 @@ namespace VehicleFinderAPI.Services
     public class VehicleService
     {
         private readonly VehicleDbContext _context;
+        private readonly ISearchIndex _index;
 
-        public VehicleService(VehicleDbContext context)
+        public VehicleService(VehicleDbContext context, ISearchClient searchClient)
         {
             _context = context;
+            _index = searchClient.InitIndex("vehicles");
         }
 
         public async Task<IEnumerable<VehicleDetails>> GetAllVehiclesAsync()
@@ -52,7 +56,11 @@ namespace VehicleFinderAPI.Services
 
         public async Task<IEnumerable<VehicleDetails>> GetVehicleByLocationAsync(string location)
         {
-            return await _context.VehicleDetails.Where(v => v.Location == location).ToListAsync();
+            //return await _context.VehicleDetails.Where(v => v.Location == location).ToListAsync();
+
+            var searchResponse = await _index.SearchAsync<VehicleDetails>(new Query(location));
+
+            return searchResponse.Hits;
         }
     }
 }

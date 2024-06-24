@@ -1,4 +1,6 @@
 ﻿using AuthenticationAPI.Models;
+using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,6 +9,8 @@ namespace VehicleFinderAPI.Models
     public class VehicleDetails
     {
         [Key]
+        [JsonProperty("objectID")]
+        //[Display(Name = "objectID")]
         public string ItemId { get; set; }
 
         [ForeignKey("ApplicationUser")]
