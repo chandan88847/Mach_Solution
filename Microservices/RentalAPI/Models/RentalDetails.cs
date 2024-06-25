@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System;
 
 namespace RentalAPI.Models
 {
@@ -24,4 +23,4 @@ namespace RentalAPI.Models
 
         public string RentingLocation { get; set; }
     }
-}
+} 
