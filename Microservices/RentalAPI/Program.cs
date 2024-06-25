@@ -4,6 +4,11 @@ using RentalServiceAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<RentalDbContext>(options => 
+options.UseSqlServer(
+    builder.Configuration.GetConnectionString("DefaultConnection"))
+);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
