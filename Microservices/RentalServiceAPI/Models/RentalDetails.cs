@@ -7,20 +7,38 @@ namespace RentalServiceAPI.Models
         [Key]
         public Guid RentalId { get; set; }
 
-        public string OwnerUserId {  get; set; }
+        [Required]
+        public string OwnerUserId { get; set; }
 
-        public string TakerUserId {  get; set; }
+        [Required]
+        public string RenterUserId { get; set; }
 
-        public string Vehicle_Number { get; set; }
+        [Required]
+        [StringLength(20)]
+        public string VehicleRNumber { get; set; }
 
+        [Required]
         public DateTime RentedDate { get; set; }
 
-        public double RentingTime {  get; set; }
+        [Required]
+        [Range(0, double.MaxValue)]
+        public double Duration { get; set; }
 
-        public bool PaymentStatus {  get; set; }
+        [Required]
+        public bool RentalStatus { get; set; }
 
+        [Required]
+        [DataType(DataType.Currency)]
+        public string TotalAmount { get; set; }
+                
+        [Required]
+        public bool PaymentStatus { get; set; }
+
+        [StringLength(50)]
         public string PaymentId { get; set; }
 
-        public string RentingLocation {  get; set; }
+        [Required]
+        [StringLength(100)]
+        public string RentingLocation { get; set; }
     }
 }
