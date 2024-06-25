@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using RentalServiceAPI.Data;
-using RentalServiceAPI.Services;
+using RentalAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,21 +12,9 @@ options.UseSqlServer(
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<RentalServiceDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAllOrigins",
-        builder => builder
-            .AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod());
-});
-builder.Services.AddScoped<RentalService>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseCors("AllowAllOrigins");
 
 app.UseAuthorization();
 
