@@ -1,23 +1,33 @@
 version: '3.4'
 
+networks:
+  backend:
+
 services:
-  userdataapi:
-    image: ${DOCKER_REGISTRY-}userdataapi
-    build:
-      context: .
-      dockerfile: UserDataAPI/Dockerfile
-
-
-
-
-  apiocelotgateway:
-    container_name: api-ocelotgateway
-    image: ${DOCKER_REGISTRY-}apiocelotgateway
-    build:
-      context: .
-      dockerfile: ApiOcelotGateway/Dockerfile
-    ports:
-      - 8001:80
+  authenticationdb:
+    container_name: authentication_db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password123@
     networks:
       - backend
+    ports:
+      - 8001:1433
       
+  authenticationapi:
+    container_name: api-authentication
+    image: ${DOCKER_REGISTRY-}authenticationapi
+    build:
+      context: .
+      dockerfile: AuthenticationAPI/Dockerfile
+    ports:
+      - 8002:80
+    networks:
+      - backend
+    environment:
+      - DB_HOST=authenticationdb
+      - DB_NAME=authentication
+      - DB_SA_PASSWORD=password123@
+
+
