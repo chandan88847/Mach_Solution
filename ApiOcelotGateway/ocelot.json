@@ -1,22 +1,36 @@
 {
   "Routes": [
     {
-      "UpstreamPathTemplate": "/api/customer",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "UpstreamPathTemplate": "/api/auth/login",
+      "UpstreamHttpMethod": [ "Post" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "customerwebapi",
+          "Host": "authenticationapi",
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/customer"
+      "DownstreamPathTemplate": "/api/auth/login"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/auth/register",
+      "UpstreamHttpMethod": [ "Post" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/auth/register"
     }
   ],
 
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:8001"
+    "BaseUrl": "http://localhost:8000"
   }
 
 }

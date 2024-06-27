@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C2591E97-F2F5-4924-B1C3-FDEF5537B6AD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIGateway", "APIGateway", "{DCDA565A-6C91-4BF7-9A6A-44712EC3368C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOcelotGateway", "ApiOcelotGateway\ApiOcelotGateway.csproj", "{E6786006-46B5-4C31-91EB-F84B9F9BDA38}"
@@ -21,7 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAPI", "Microservices\Us
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleFinderAPI", "Microservices\VehicleFinderAPI\VehicleFinderAPI.csproj", "{07464B72-82D9-49C8-AC03-BE7F35E85580}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalAPI", "Microservices\RentalAPI\RentalAPI.csproj", "{04B9AF37-213E-40E4-8A42-FE627097F2A1}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalServiceAPI", "Microservices\RentalServiceAPI\RentalServiceAPI.csproj", "{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{173DDBFA-9027-401D-93A9-91734BC73217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C2591E97-F2F5-4924-B1C3-FDEF5537B6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2591E97-F2F5-4924-B1C3-FDEF5537B6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2591E97-F2F5-4924-B1C3-FDEF5537B6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2591E97-F2F5-4924-B1C3-FDEF5537B6AD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6786006-46B5-4C31-91EB-F84B9F9BDA38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6786006-46B5-4C31-91EB-F84B9F9BDA38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6786006-46B5-4C31-91EB-F84B9F9BDA38}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +50,14 @@ Global
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
