@@ -19,7 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserAPI", "Microservices\Us
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleFinderAPI", "Microservices\VehicleFinderAPI\VehicleFinderAPI.csproj", "{07464B72-82D9-49C8-AC03-BE7F35E85580}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalAPI", "Microservices\RentalAPI\RentalAPI.csproj", "{04B9AF37-213E-40E4-8A42-FE627097F2A1}"
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalServiceAPI", "Microservices\RentalServiceAPI\RentalServiceAPI.csproj", "{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{173DDBFA-9027-401D-93A9-91734BC73217}"
@@ -50,18 +49,14 @@ Global
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07464B72-82D9-49C8-AC03-BE7F35E85580}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04B9AF37-213E-40E4-8A42-FE627097F2A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
