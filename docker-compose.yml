@@ -21,8 +21,6 @@ services:
     build:
       context: .
       dockerfile: AuthenticationAPI/Dockerfile
-    ports:
-      - 8002:80
     networks:
       - backend
     environment:
@@ -30,4 +28,16 @@ services:
       - DB_NAME=authentication
       - DB_SA_PASSWORD=password123@
 
+
+
+  apiocelotgateway:
+    container_name: api_gateway
+    image: ${DOCKER_REGISTRY-}apiocelotgateway
+    build:
+      context: .
+      dockerfile: ApiOcelotGateway/Dockerfile
+    ports:
+      - 8000:80
+    networks:
+      - backend
 
