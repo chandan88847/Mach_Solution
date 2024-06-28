@@ -23,4 +23,4 @@ namespace RentalAPI.Models
 
         public string RentingLocation { get; set; }
     }
-}
+} 
