@@ -6,7 +6,9 @@
       "serviceActions": {
         "userdataapi": "StartDebugging",
         "apiocelotgateway": "StartDebugging",
-        "authenticationapi": "StartDebugging"
+        "authenticationapi": "StartDebugging",
+        "paymentservice": "StartDebugging",
+        "userapi": "StartDebugging"
       }
     }
   }

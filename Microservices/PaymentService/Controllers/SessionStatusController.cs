@@ -3,7 +3,7 @@ using Stripe.Checkout;
 
 namespace PaymentService.Controllers
 {
-    [Route("session-status")]
+    [Route("api/session-status")]
     [ApiController]
     public class SessionStatusController : Controller
     {

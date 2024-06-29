@@ -41,3 +41,27 @@ services:
     networks:
       - backend
 
+
+  paymentservice:
+    container_name: api_payment
+    image: ${DOCKER_REGISTRY-}paymentservice
+    build:
+      context: .
+      dockerfile: Microservices/PaymentService/Dockerfile
+    networks:
+      - backend
+
+
+  userapi:
+    container_name: api-user
+    image: ${DOCKER_REGISTRY-}userapi
+    build:
+      context: .
+      dockerfile: Microservices/UserAPI/Dockerfile
+    networks:
+      - backend
+    environment:
+      - DB_HOST=authenticationdb
+      - DB_NAME=userdb
+      - DB_SA_PASSWORD=password123@
+

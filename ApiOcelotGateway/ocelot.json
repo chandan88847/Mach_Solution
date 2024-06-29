@@ -26,7 +26,51 @@
         }
       ],
       "DownstreamPathTemplate": "/api/auth/register"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/create-checkout-session",
+      "UpstreamHttpMethod": [ "Post" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "paymentservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/create-checkout-session"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/session-status",
+      "UpstreamHttpMethod": [ "Get" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "paymentservice",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/session-status"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/user/createuserprofileasync",
+      "UpstreamHttpMethod": [ "POST" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/createuserprofileasync"
     }
+
+
   ],
 
   "GlobalConfiguration": {

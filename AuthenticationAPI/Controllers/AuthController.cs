@@ -113,6 +113,7 @@ namespace AuthenticationAPI.Controllers
                 Name = registerDTO.Name,
                 
             };
+
             try
             {
 
