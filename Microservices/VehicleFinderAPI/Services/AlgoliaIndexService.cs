@@ -12,27 +12,38 @@ namespace VehicleFinderAPI.Services
         {
             _searchClient = searchClient;
             _index = _searchClient.InitIndex("vehicles");
-        }
+        }       
 
-        public async Task IndexVehiclesAsync(IEnumerable<VehicleDetails> vehicles)
+        //When user create vehicla for rental.
+        public async Task AddorUpdateIndexVehiclesAsync(VehicleDetails vehicles)
         {
-            var records = vehicles.Select(v => new
+            var records = new 
             {
-                ObjectID = v.ItemId,
-                ApplicationId = v.ApplicationId,
-                ItemName = v.ItemName,
-                ItemDescription = v.ItemDescription,
-                ItemType = v.ItemType,
-                PurchaseDate = v.PurchaseDate,
-                Condition = v.Condition,
-                Status = v.Status,
-                PricePerHour = v.PricePerHour,
-                VehicleRNumber = v.VehicleRNumber,
-                Insurance = v.Insurance,
-                Location = v.Location
-            });
+                ObjectID = vehicles.ItemId,
+                vehicles.ApplicationId,
+                vehicles.ItemName,
+                vehicles.ItemDescription,
+                vehicles.ItemType,
+                vehicles.PurchaseDate,
+                vehicles.Condition,
+                vehicles.Status,
+                vehicles.PricePerHour,
+                vehicles.VehicleRNumber,
+                vehicles.Insurance,
+                vehicles.Location
+            };
 
-            await _index.SaveObjectsAsync(records);
+            try
+            {
+                await _index.SaveObjectAsync(records);
+                Console.WriteLine("Record updated successfully in Algolia.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating record: {ex.Message}");
+            }
+        
+
         }
     }
 }

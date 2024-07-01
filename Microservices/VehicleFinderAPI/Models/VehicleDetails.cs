@@ -9,8 +9,7 @@ namespace VehicleFinderAPI.Models
     public class VehicleDetails
     {
         [Key]
-        [JsonProperty("objectID")]
-        //[Display(Name = "objectID")]
+        [JsonProperty("objectID")]       
         public string ItemId { get; set; }
 
         [ForeignKey("ApplicationUser")]

@@ -24,6 +24,7 @@ namespace VehicleFinderAPI.Controllers
             return Ok(vehicles);
         }
 
+        //To be deleted
         // GET: api/VehicleDetails/{id}
         [HttpGet("getvehicle/{id}")]
         public async Task<ActionResult<VehicleDetails>> GetVehicle(string id)
@@ -40,7 +41,7 @@ namespace VehicleFinderAPI.Controllers
 
         // POST: api/VehicleDetails
         [HttpPost("createvehicle")]
-        public async Task<ActionResult<VehicleDetails>> CreateVehicle([FromBody] VehicleDetails vehicleDetails)
+        public async Task<ActionResult<VehicleDetails>> CreateVehicle(VehicleDetails vehicleDetails)
         {
             var createdVehicle = await _vehicleService.CreateVehicleAsync(vehicleDetails);
             return CreatedAtAction(nameof(GetVehicle), new { id = createdVehicle.ItemId }, createdVehicle);
@@ -50,12 +51,12 @@ namespace VehicleFinderAPI.Controllers
         [HttpPut("updatevehicle")]
         public async Task<IActionResult> UpdateVehicle([FromBody] VehicleDetails vehicleDetails)
         {
-            var updatedProfile = _vehicleService.UpdateVehicleAsync(vehicleDetails);
-            if (updatedProfile == null)
+            var updatedVehicle = await _vehicleService.UpdateVehicleAsync(vehicleDetails);
+            if (updatedVehicle == null)
             {
                 return NotFound();
             }
-            return Ok(updatedProfile);
+            return Ok(updatedVehicle);
         }
 
         // DELETE: api/VehicleDetails/{id}

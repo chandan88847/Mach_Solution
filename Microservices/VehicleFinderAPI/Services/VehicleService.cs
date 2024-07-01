@@ -2,6 +2,7 @@
 using Algolia.Search.Models.Search;
 using Microsoft.EntityFrameworkCore;
 using UserAPI.Data;
+//using VehicleFinderAPI.Migrations;
 using VehicleFinderAPI.Models;
 
 namespace VehicleFinderAPI.Services
@@ -10,11 +11,13 @@ namespace VehicleFinderAPI.Services
     {
         private readonly VehicleDbContext _context;
         private readonly ISearchIndex _index;
+        private readonly AlgoliaIndexService _algoliaIndexService;
 
-        public VehicleService(VehicleDbContext context, ISearchClient searchClient)
+        public VehicleService(VehicleDbContext context, ISearchClient searchClient, AlgoliaIndexService algoliaIndexService)
         {
-            _context = context;
-            _index = searchClient.InitIndex("vehicles");
+            _context = context; 
+            _algoliaIndexService = algoliaIndexService;
+            _index = searchClient.InitIndex("vehicles");           
         }
 
         public async Task<IEnumerable<VehicleDetails>> GetAllVehiclesAsync()
@@ -22,22 +25,34 @@ namespace VehicleFinderAPI.Services
             return await _context.VehicleDetails.ToListAsync();
         }
 
+        //Not needed.
         public async Task<VehicleDetails> GetVehicleByIdAsync(string itemId)
         {
             return await _context.VehicleDetails.FindAsync(itemId);
         }
 
+
         public async Task<VehicleDetails> CreateVehicleAsync(VehicleDetails vehicleDetails)
         {
             _context.VehicleDetails.Add(vehicleDetails);
-            await _context.SaveChangesAsync();
+            var response = await _context.SaveChangesAsync();
+            if (response == null)
+            {
+                return vehicleDetails;
+            }
+            await _algoliaIndexService.AddorUpdateIndexVehiclesAsync(vehicleDetails);
             return vehicleDetails;
         }
 
         public async Task<VehicleDetails> UpdateVehicleAsync(VehicleDetails vehicleDetails)
         {
             _context.Entry(vehicleDetails).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            var response = await _context.SaveChangesAsync();
+            if (response == null)
+            {
+                return vehicleDetails;
+            }
+            await _algoliaIndexService.AddorUpdateIndexVehiclesAsync(vehicleDetails);
             return vehicleDetails;
         }
 
