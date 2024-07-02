@@ -16,8 +16,15 @@ namespace RentalServiceAPI.Services
 
         public async Task<RentalDetails> CreateRentalDetailsAsync([FromBody] RentalDetails rentalDetails)
         {
+            rentalDetails.RentedDate= DateTime.Now;
+            rentalDetails.PaymentStatus = false;
             _context.RentalDetails.Add(rentalDetails);
-            await _context.SaveChangesAsync();
+            var result = await _context.SaveChangesAsync();
+            if(result>0)
+            {
+
+            }
+           
             return rentalDetails;
         }
         public async Task<RentalDetails> GetAllRentalDetailsByIdAsync([FromBody] Guid id)

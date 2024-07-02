@@ -37,6 +37,7 @@ namespace RentalServiceAPI.Controllers
         public async Task<ActionResult<RentalDetails>> CreateRentalDetails([FromBody] RentalDetails rentalDetails)
         {
             var rentalDetail = await _rentalService.CreateRentalDetailsAsync(rentalDetails);
+
             return CreatedAtAction(nameof(GetAllRenatlDetailsById), new { id = rentalDetail.RentalId }, rentalDetail);
         }
 
