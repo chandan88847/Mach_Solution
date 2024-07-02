@@ -1,6 +1,7 @@
 ﻿using AuthenticationAPI.Data;
 using AuthenticationAPI.DTO;
 using AuthenticationAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -41,6 +42,37 @@ namespace AuthenticationAPI.Services
                (u => u.UserName.ToLower() == userName.ToLower());
             return userFromDb.Id.ToString();
         }
+
+        public async Task<UsermProfileDTO>GetUserByUserId(string userId)
+        {
+
+            //ApplicationUser userFromDb = _context.ApplicationUsers.Find(userId);
+
+            List<ApplicationUser> userFromDb =new List<ApplicationUser>();
+            userFromDb=_context.ApplicationUsers.ToList(); // Deferred execution
+            ApplicationUser applicationUser = new ApplicationUser();
+
+            foreach (var customer in userFromDb)
+            {
+                if(customer.Id == userId)
+                {
+                    applicationUser = customer;
+                }
+                
+            }
+
+
+            var usermProfileDTO = new UsermProfileDTO
+            {
+                    UserId = userId,
+                    UserName = applicationUser.UserName,
+                    Email = applicationUser.Email,
+                    Name = applicationUser.Name,
+            };
+            return usermProfileDTO;
+            
+        }
+       
 
 
     }

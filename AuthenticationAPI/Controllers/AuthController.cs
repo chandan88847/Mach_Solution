@@ -75,6 +75,7 @@ namespace AuthenticationAPI.Controllers
             LoginResponseDTO loginResponseDTO = new LoginResponseDTO()
             {
                 Email=userFromDb.Email,
+                ApplicationUserId=userFromDb.Id,
                 Token= tokenHandler.WriteToken(token)
             };
 
@@ -127,7 +128,7 @@ namespace AuthenticationAPI.Controllers
                         await _roleManager.CreateAsync(new IdentityRole(Constants.Role_User));
 
                     }
-                    if (registerDTO.Role.ToLower() == Constants.Role_Admin)
+                    if (registerDTO.Role?.ToLower() == Constants.Role_Admin)
                     {
                         await _userManager.AddToRoleAsync(applicationUser, Constants.Role_Admin);
                     }
@@ -154,5 +155,13 @@ namespace AuthenticationAPI.Controllers
             return BadRequest(_apiResponse);
 
         }
+
+        [HttpGet("GetUserProfileByUserID/{UserId}")]
+        public async Task<ActionResult<UsermProfileDTO>> GetUserProfileByApplicationID(string UserId)
+        {
+            var profile = await _applicationUserService.GetUserByUserId(UserId);
+            return Ok(profile);
+        }
+
     }
 }

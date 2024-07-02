@@ -68,8 +68,21 @@
         }
       ],
       "DownstreamPathTemplate": "/api/user/createuserprofileasync"
-    }
+    },
 
+    {
+      "UpstreamPathTemplate": "/api/auth/GetUserProfileByUserID/{UserId}",
+      "UpstreamHttpMethod": [ "GET","OPTIONS" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "authenticationapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/auth/GetUserProfileByUserID/{UserId}"
+    }
 
   ],
 
