@@ -8,7 +8,8 @@
         "apiocelotgateway": "StartDebugging",
         "authenticationapi": "StartDebugging",
         "paymentservice": "StartDebugging",
-        "userapi": "StartDebugging"
+        "userapi": "StartDebugging",
+        "parkapi": "StartDebugging"
       }
     }
   }

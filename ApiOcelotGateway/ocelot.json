@@ -72,7 +72,7 @@
 
     {
       "UpstreamPathTemplate": "/api/auth/GetUserProfileByUserID/{UserId}",
-      "UpstreamHttpMethod": [ "GET","OPTIONS" ],
+      "UpstreamHttpMethod": [ "GET" ],
 
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -82,7 +82,76 @@
         }
       ],
       "DownstreamPathTemplate": "/api/auth/GetUserProfileByUserID/{UserId}"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/park/createpark",
+      "UpstreamHttpMethod": [ "POST" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "parkapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/park/createpark"
+    },
+
+    {
+      "UpstreamPathTemplate": "/api/park/updatepark",
+      "UpstreamHttpMethod": [ "PUT" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "parkapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/park/updatepark"
+    },
+    {
+      "UpstreamPathTemplate": "/api/park/getpark",
+      "UpstreamHttpMethod": [ "GET" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "parkapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/park/getpark"
+    },
+    {
+      "UpstreamPathTemplate": "/api/user/GetUserProfileByApplicationID/{applicationUserId}",
+      "UpstreamHttpMethod": [ "GET" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/GetUserProfileByApplicationID/{applicationUserId}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/user/update",
+      "UpstreamHttpMethod": [ "PUT" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "userapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/user/update"
     }
+
+
 
   ],
 
