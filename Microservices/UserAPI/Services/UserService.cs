@@ -55,12 +55,12 @@ namespace UserAPI.Services
 
         public async Task<User> UpdateUserProfileAsync(User userProfile)
         {
-            var existingProfile = await _context.UserProfiles.FindAsync(userProfile.UserProfileId);
+            var existingProfile = await _context.UserProfiles.FirstOrDefaultAsync(u => u.ApplicationUserId == userProfile.ApplicationUserId);
             if (existingProfile == null)
             {
                 return null; // or throw an exception
             }
-
+              userProfile.UserProfileId=existingProfile.UserProfileId; ;
             _context.Entry(existingProfile).CurrentValues.SetValues(userProfile);
             await _context.SaveChangesAsync();
 

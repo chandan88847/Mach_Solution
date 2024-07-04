@@ -48,9 +48,17 @@ namespace UserAPI.Controllers
 
         // PUT: api/UserProfile
         [HttpPut("update")]
-        public async Task<ActionResult<User>> UpdateUserProfile(User userProfile)
+        public async Task<ActionResult<User>> UpdateUserProfile(UpdateDto updateDto)
         {
-           
+            User userProfile = new User { ApplicationUserId=updateDto.ApplicationUserId,
+                                   DateOfBirth=updateDto.DateOfBirth,
+                                   Gender=updateDto.Gender,
+                                   Address=updateDto.Address,
+                                   DrivingLicenseId=updateDto.DrivingLicenseId,
+                                   City=updateDto.City,
+            };
+
+
             var updatedProfile = await _userService.UpdateUserProfileAsync(userProfile);
             if (updatedProfile == null)
             {

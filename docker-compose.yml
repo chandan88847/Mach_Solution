@@ -65,3 +65,18 @@ services:
       - DB_NAME=userdb
       - DB_SA_PASSWORD=password123@
 
+
+  parkapi:
+    container_name: api-park
+    image: ${DOCKER_REGISTRY-}parkapi
+    build:
+      context: .
+      dockerfile: Microservices/ParkAPI/Dockerfile
+    networks:
+      - backend
+    environment:
+      - DB_HOST=authenticationdb
+      - DB_NAME=ParkDb
+      - DB_SA_PASSWORD=password123@
+
+

@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentalServiceAPI", "Microse
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{173DDBFA-9027-401D-93A9-91734BC73217}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkAPI", "Microservices\ParkAPI\ParkAPI.csproj", "{410761CC-C4E2-4449-9027-84C87E38AFBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{173DDBFA-9027-401D-93A9-91734BC73217}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{173DDBFA-9027-401D-93A9-91734BC73217}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410761CC-C4E2-4449-9027-84C87E38AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410761CC-C4E2-4449-9027-84C87E38AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410761CC-C4E2-4449-9027-84C87E38AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410761CC-C4E2-4449-9027-84C87E38AFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{5C8176B7-23D6-42AC-8B8E-1B7169392B08} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
 		{07464B72-82D9-49C8-AC03-BE7F35E85580} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
 		{D19BB741-7E2B-448F-96B1-C3E119A6FAC6} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
+		{410761CC-C4E2-4449-9027-84C87E38AFBC} = {A00C7064-8614-42A1-8C85-FB6770D9ABEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CCFE3C7-EF9E-41AD-BD43-F14E4897AD7C}
