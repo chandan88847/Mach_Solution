@@ -137,6 +137,7 @@ namespace AuthenticationAPI.Controllers
                         await _userManager.AddToRoleAsync(applicationUser, Constants.Role_Admin);
                     }
                     var user = _applicationUserService.GetUserIdByUserName(registerDTO.UserName);
+                   
                     bool flag=await _applicationUserService.ApplicationUserEntityAsync(user.Result.ToString());
                     _apiResponse.httpstatuscode = HttpStatusCode.OK;
                     _apiResponse.IsSuccess = true;

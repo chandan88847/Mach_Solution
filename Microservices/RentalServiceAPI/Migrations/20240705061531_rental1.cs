@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RentalServiceAPI.Migrations
 {
-    public partial class Rent : Migration
+    public partial class rental1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,10 +19,9 @@ namespace RentalServiceAPI.Migrations
                     VehicleRNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     RentedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Duration = table.Column<double>(type: "float", nullable: false),
-                    RentalStatus = table.Column<bool>(type: "bit", nullable: false),
-                    TotalAmount = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalAmount = table.Column<double>(type: "float", nullable: false),
+                    paymentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PaymentStatus = table.Column<bool>(type: "bit", nullable: false),
-                    PaymentId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     RentingLocation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>

@@ -57,6 +57,8 @@ namespace ParkAPI.Controllers
                         Address = parkDto.Address,
                         AvailableHours = parkDto.AvailableHours,
                         ExpectedReturnTime = parkDto.ExpectedReturnTime,
+                        PricePerHour = parkDto.PricePerHour,
+
 
                     };
 

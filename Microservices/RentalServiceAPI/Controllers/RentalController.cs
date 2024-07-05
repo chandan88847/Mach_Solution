@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RentalServiceAPI.Dto;
 using RentalServiceAPI.Models;
 using RentalServiceAPI.Services;
 
@@ -32,10 +33,30 @@ namespace RentalServiceAPI.Controllers
             return Ok(rentalDetails);
         }
 
+        [HttpGet("getrentaldetailsbyuserid/{id}")]
+        public async Task<ActionResult<IEnumerable<RentalDetails>>> GetAllRenatlDetailsByUserId(string id)
+        {
+            var rentalDetails = await _rentalService.GetAllRenatlDetailsByUserId(id);
+            return Ok(rentalDetails);
+        }
+
         // POST: api/RentalDetails
         [HttpPost("createrentaldetails")]
-        public async Task<ActionResult<RentalDetails>> CreateRentalDetails([FromBody] RentalDetails rentalDetails)
+        public async Task<ActionResult<RentalDetails>> CreateRentalDetails([FromBody] RentalDetailsDto rentalDetailsDto)
         {
+            RentalDetails rentalDetails = new RentalDetails
+            {
+                OwnerUserId = rentalDetailsDto.OwnerUserId,
+                RenterUserId = rentalDetailsDto.RenterUserId,
+                VehicleRNumber = rentalDetailsDto.VehicleRNumber,
+                RentedDate = rentalDetailsDto.RentedDate,
+                Duration = rentalDetailsDto.Duration,
+                TotalAmount = rentalDetailsDto.TotalAmount,
+                paymentId = rentalDetailsDto.paymentId,
+                PaymentStatus = rentalDetailsDto.paymentId != null ? true : false,
+                RentingLocation=rentalDetailsDto.RentingLocation
+
+            };
             var rentalDetail = await _rentalService.CreateRentalDetailsAsync(rentalDetails);
 
             return CreatedAtAction(nameof(GetAllRenatlDetailsById), new { id = rentalDetail.RentalId }, rentalDetail);

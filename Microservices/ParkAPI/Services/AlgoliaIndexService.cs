@@ -27,6 +27,7 @@ namespace ParkAPI.Services
                 park.Address,
                 park.ApplicationUserId,
                 park.VehicleNumber,
+                park.PricePerHour,
                 
                 //park.VehicleImage,
                 park.ExpectedReturnTime
