@@ -46,6 +46,9 @@ namespace ParkAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("PricePerHour")
+                        .HasColumnType("float");
+
                     b.Property<string>("VehicleDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

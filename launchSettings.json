@@ -9,7 +9,8 @@
         "authenticationapi": "StartDebugging",
         "paymentservice": "StartDebugging",
         "userapi": "StartDebugging",
-        "parkapi": "StartDebugging"
+        "parkapi": "StartDebugging",
+        "rentalserviceapi": "StartDebugging"
       }
     }
   }

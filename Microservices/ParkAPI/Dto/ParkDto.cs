@@ -14,6 +14,7 @@
 
         public double AvailableHours { get; set; }
 
+        public double PricePerHour {  get; set; }
         public DateTime ExpectedReturnTime { get; set; }
 
         public IFormFile VehicleImage { get; set; }

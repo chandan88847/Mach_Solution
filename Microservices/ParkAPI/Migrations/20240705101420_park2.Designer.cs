@@ -12,8 +12,8 @@ using ParkAPI.Data;
 namespace ParkAPI.Migrations
 {
     [DbContext(typeof(ParkDbContext))]
-    [Migration("20240704065023_newpark")]
-    partial class newpark
+    [Migration("20240705101420_park2")]
+    partial class park2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,9 @@ namespace ParkAPI.Migrations
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PricePerHour")
+                        .HasColumnType("float");
 
                     b.Property<string>("VehicleDescription")
                         .IsRequired()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PaymentService.Dto;
 using Stripe.Checkout;
 
 namespace PaymentService.Controllers
@@ -7,10 +8,10 @@ namespace PaymentService.Controllers
     [ApiController]
     public class CheckoutApiController : Controller
     {
-        [HttpPost]
-        public ActionResult Create()
+        [HttpPost("create")]
+        public ActionResult Create([FromBody] PaymentReceiveDto paymentreceiveDto)
         {
-            var domain = "http://localhost:3000";
+            var domain = "http://localhost:3000/return";
             var options = new SessionCreateOptions
             {
                 UiMode = "embedded",
@@ -22,11 +23,11 @@ namespace PaymentService.Controllers
                     //Price = "prod_QJGJshnFcEGwXl",
                     PriceData = new SessionLineItemPriceDataOptions
                      {
-                       UnitAmount = 100000000,
+                       UnitAmount = Convert.ToInt32(paymentreceiveDto.value)*100,
                        Currency = "inr",
                        ProductData = new SessionLineItemPriceDataProductDataOptions
                        {
-                          Name = "T-shirt",
+                          Name = "For"+" "+paymentreceiveDto.vehiclenumber+" "+"Renting",
                        },
                      },
                     Quantity = 1,

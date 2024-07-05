@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ParkAPI.Migrations
 {
-    public partial class newpark : Migration
+    public partial class park2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,6 +20,7 @@ namespace ParkAPI.Migrations
                     VehicleNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AvailableHours = table.Column<double>(type: "float", nullable: false),
+                    PricePerHour = table.Column<double>(type: "float", nullable: false),
                     ExpectedReturnTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     VehicleImage = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },

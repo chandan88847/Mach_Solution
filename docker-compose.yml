@@ -80,3 +80,17 @@ services:
       - DB_SA_PASSWORD=password123@
 
 
+
+  rentalserviceapi:
+    container_name: api-rental
+    image: ${DOCKER_REGISTRY-}rentalserviceapi
+    build:
+      context: .
+      dockerfile: Microservices/RentalServiceAPI/Dockerfile
+    networks:
+      - backend
+    environment:
+      - DB_HOST=authenticationdb
+      - DB_NAME=rentaldb
+      - DB_SA_PASSWORD=password123@
+

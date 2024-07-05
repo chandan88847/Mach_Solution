@@ -12,8 +12,8 @@ using RentalServiceAPI.Data;
 namespace RentalServiceAPI.Migrations
 {
     [DbContext(typeof(RentalServiceDbContext))]
-    [Migration("20240624123623_Rent")]
-    partial class Rent
+    [Migration("20240705061531_rental1")]
+    partial class rental1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,15 +37,7 @@ namespace RentalServiceAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PaymentId")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<bool>("PaymentStatus")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("RentalStatus")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("RentedDate")
@@ -60,14 +52,17 @@ namespace RentalServiceAPI.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("TotalAmount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("TotalAmount")
+                        .HasColumnType("float");
 
                     b.Property<string>("VehicleRNumber")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("paymentId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RentalId");
 

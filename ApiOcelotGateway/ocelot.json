@@ -29,7 +29,7 @@
     },
 
     {
-      "UpstreamPathTemplate": "/api/create-checkout-session",
+      "UpstreamPathTemplate": "/api/create-checkout-session/create",
       "UpstreamHttpMethod": [ "Post" ],
 
       "DownstreamScheme": "http",
@@ -39,7 +39,7 @@
           "Port": 80
         }
       ],
-      "DownstreamPathTemplate": "/api/create-checkout-session"
+      "DownstreamPathTemplate": "/api/create-checkout-session/create"
     },
 
     {
@@ -149,8 +149,46 @@
         }
       ],
       "DownstreamPathTemplate": "/api/user/update"
-    }
+    },
+    {
+      "UpstreamPathTemplate": "/api/park/getvehiclebylocation/{location}",
+      "UpstreamHttpMethod": [ "GET" ],
 
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "parkapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/park/getvehiclebylocation/{location}"
+    },
+    {
+      "UpstreamPathTemplate": "/api/rental/createrentaldetails",
+      "UpstreamHttpMethod": [ "POST" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rentalserviceapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/rental/createrentaldetails"
+    },
+    {
+      "UpstreamPathTemplate": "/api/rental/getrentaldetailsbyuserid/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "rentalserviceapi",
+          "Port": 80
+        }
+      ],
+      "DownstreamPathTemplate": "/api/rental/getrentaldetailsbyuserid/{id}"
+    },
 
 
   ],

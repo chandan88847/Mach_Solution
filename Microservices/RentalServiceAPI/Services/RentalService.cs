@@ -16,8 +16,7 @@ namespace RentalServiceAPI.Services
 
         public async Task<RentalDetails> CreateRentalDetailsAsync([FromBody] RentalDetails rentalDetails)
         {
-            rentalDetails.RentedDate= DateTime.Now;
-            rentalDetails.PaymentStatus = false;
+           
             _context.RentalDetails.Add(rentalDetails);
             var result = await _context.SaveChangesAsync();
             if(result>0)
@@ -35,6 +34,14 @@ namespace RentalServiceAPI.Services
         public async Task<IEnumerable<RentalDetails>> GetAllRentalDetailsAsync()
         {
             return await _context.RentalDetails.ToListAsync();
+        }
+
+        public async Task<IEnumerable<RentalDetails>> GetAllRenatlDetailsByUserId(string id)
+        {
+            var result = _context.RentalDetails.Where(obj=>obj.RenterUserId==id).ToList();
+           
+            return result;
+           
         }
 
         public async Task<RentalDetails> UpdateRentalServiceAsync(RentalDetails rentalDetails)
