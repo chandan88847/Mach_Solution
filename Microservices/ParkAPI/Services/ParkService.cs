@@ -87,6 +87,9 @@ namespace ParkAPI.Services
             Park park=new Park();
             park=result.FirstOrDefault();
             park.Flag = 1;
+            _context.Entry(park).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            
             await _algoliaIndexService.AddorUpdateIndexVehiclesAsync(park);
             return park;
 
