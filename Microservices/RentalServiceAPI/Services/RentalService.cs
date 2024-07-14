@@ -40,6 +40,7 @@ namespace RentalServiceAPI.Services
         {
             var result = _context.RentalDetails.Where(obj=>obj.RenterUserId==id).ToList();
            
+
             return result;
            
         }

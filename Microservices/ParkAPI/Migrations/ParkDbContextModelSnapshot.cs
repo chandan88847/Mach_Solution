@@ -42,6 +42,9 @@ namespace ParkAPI.Migrations
                     b.Property<DateTime>("ExpectedReturnTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("Flag")
+                        .HasColumnType("int");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

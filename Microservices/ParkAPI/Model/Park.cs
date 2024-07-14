@@ -26,5 +26,7 @@ namespace ParkAPI.Model
         public DateTime ExpectedReturnTime {  get; set; }
 
         public byte[] VehicleImage { get; set; }
+
+        public int? Flag { get; set; }
     }
 }

@@ -76,5 +76,22 @@ namespace ParkAPI.Services
 
             return searchResponse.Hits;
         }
+
+        public async Task<Park> UpdateParkByVehicleNumber(string itemId)
+        {
+            var result = _context.ParkTable.Where(obj => obj.VehicleNumber == itemId).ToList();
+            if(result.Count == 0)
+            {
+                return null;
+            }
+            Park park=new Park();
+            park=result.FirstOrDefault();
+            park.Flag = 1;
+            await _algoliaIndexService.AddorUpdateIndexVehiclesAsync(park);
+            return park;
+
+        }
+
+       
     }
 }

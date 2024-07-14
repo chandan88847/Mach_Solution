@@ -1,8 +1,8 @@
 version: '3.4'
-
+ 
 networks:
   backend:
-
+ 
 services:
   authenticationdb:
     container_name: authentication_db
@@ -14,10 +14,9 @@ services:
       - backend
     ports:
       - 8001:1433
-      
   authenticationapi:
     container_name: api-authentication
-    image: ${DOCKER_REGISTRY-}authenticationapi
+    image: unpark.azurecr.io/authenticationapi:dev
     build:
       context: .
       dockerfile: AuthenticationAPI/Dockerfile
@@ -27,12 +26,11 @@ services:
       - DB_HOST=authenticationdb
       - DB_NAME=authentication
       - DB_SA_PASSWORD=password123@
-
-
-
+ 
+ 
   apiocelotgateway:
     container_name: api_gateway
-    image: ${DOCKER_REGISTRY-}apiocelotgateway
+    image: unpark.azurecr.io/apiocelotgateway:dev
     build:
       context: .
       dockerfile: ApiOcelotGateway/Dockerfile
@@ -41,20 +39,18 @@ services:
     networks:
       - backend
 
-
   paymentservice:
     container_name: api_payment
-    image: ${DOCKER_REGISTRY-}paymentservice
+    image: unpark.azurecr.io/paymentservice:dev
     build:
       context: .
       dockerfile: Microservices/PaymentService/Dockerfile
     networks:
       - backend
 
-
   userapi:
     container_name: api-user
-    image: ${DOCKER_REGISTRY-}userapi
+    image: unpark.azurecr.io/userapi:dev
     build:
       context: .
       dockerfile: Microservices/UserAPI/Dockerfile
@@ -65,10 +61,9 @@ services:
       - DB_NAME=userdb
       - DB_SA_PASSWORD=password123@
 
-
   parkapi:
     container_name: api-park
-    image: ${DOCKER_REGISTRY-}parkapi
+    image: unpark.azurecr.io/parkapi:dev
     build:
       context: .
       dockerfile: Microservices/ParkAPI/Dockerfile
@@ -79,11 +74,9 @@ services:
       - DB_NAME=ParkDb
       - DB_SA_PASSWORD=password123@
 
-
-
   rentalserviceapi:
     container_name: api-rental
-    image: ${DOCKER_REGISTRY-}rentalserviceapi
+    image: unpark.azurecr.io/rentalserviceapi:dev
     build:
       context: .
       dockerfile: Microservices/RentalServiceAPI/Dockerfile
@@ -93,4 +86,3 @@ services:
       - DB_HOST=authenticationdb
       - DB_NAME=rentaldb
       - DB_SA_PASSWORD=password123@
-
