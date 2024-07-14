@@ -12,8 +12,8 @@ using ParkAPI.Data;
 namespace ParkAPI.Migrations
 {
     [DbContext(typeof(ParkDbContext))]
-    [Migration("20240705101420_park2")]
-    partial class park2
+    [Migration("20240713122839_park3")]
+    partial class park3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,9 @@ namespace ParkAPI.Migrations
 
                     b.Property<DateTime>("ExpectedReturnTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("Flag")
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .IsRequired()

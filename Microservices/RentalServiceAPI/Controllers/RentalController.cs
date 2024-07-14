@@ -49,7 +49,7 @@ namespace RentalServiceAPI.Controllers
                 OwnerUserId = rentalDetailsDto.OwnerUserId,
                 RenterUserId = rentalDetailsDto.RenterUserId,
                 VehicleRNumber = rentalDetailsDto.VehicleRNumber,
-                RentedDate = rentalDetailsDto.RentedDate,
+                RentedDate = DateTime.Now,
                 Duration = rentalDetailsDto.Duration,
                 TotalAmount = rentalDetailsDto.TotalAmount,
                 paymentId = rentalDetailsDto.paymentId,

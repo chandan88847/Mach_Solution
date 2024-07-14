@@ -48,17 +48,17 @@ namespace ParkAPI.Controllers
             {
                 try
                 {
-                    Park park = new Park
-                    {
-                        ApplicationUserId = parkDto.ApplicationUserId,
-                        VehicleDescription = parkDto.VehicleDescription,
-                        Location = parkDto.Location,
-                        VehicleNumber = parkDto.VehicleNumber,
-                        Address = parkDto.Address,
-                        AvailableHours = parkDto.AvailableHours,
-                        ExpectedReturnTime = parkDto.ExpectedReturnTime,
-                        PricePerHour = parkDto.PricePerHour,
-
+                Park park = new Park
+                {
+                    ApplicationUserId = parkDto.ApplicationUserId,
+                    VehicleDescription = parkDto.VehicleDescription,
+                    Location = parkDto.Location,
+                    VehicleNumber = parkDto.VehicleNumber,
+                    Address = parkDto.Address,
+                    AvailableHours = parkDto.AvailableHours,
+                    ExpectedReturnTime = parkDto.ExpectedReturnTime,
+                    PricePerHour = parkDto.PricePerHour,
+                    Flag = 0
 
                     };
 
@@ -114,6 +114,19 @@ namespace ParkAPI.Controllers
                 }
                 return Ok(vehicles);
             }
-        
+
+           [HttpGet("updateparkbyvehiclenumber/{id}")]
+           public async Task<ActionResult<Park>> UpdateParkByVehicleNumber(string id)
+           {
+              var vehicle = await _parkService.UpdateParkByVehicleNumber(id);
+
+              if (vehicle == null)
+              {
+                return NotFound();
+              }
+
+              return Ok(vehicle);
+           }
+
     }
 }
